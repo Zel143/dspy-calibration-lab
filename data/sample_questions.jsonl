@@ -1,0 +1,10 @@
+{"question": "What is the capital of France?", "gold_answer": "Paris"}
+{"question": "Who wrote the Gospel of John, according to traditional attribution?", "gold_answer": "John the Apostle"}
+{"question": "What is the boiling point of water at sea level in Celsius?", "gold_answer": "100"}
+{"question": "In what year did the Council of Nicaea take place?", "gold_answer": "325"}
+{"question": "What programming paradigm does DSPy primarily use to define LLM pipelines?", "gold_answer": "declarative"}
+{"question": "What is the Hebrew word traditionally translated as 'covenant'?", "gold_answer": "berit"}
+{"question": "Which university originally developed the SWE-agent tool?", "gold_answer": "Princeton"}
+{"question": "What algorithm is commonly used for sequence alignment in bioinformatics and also applied to textual comparison, involving dynamic programming with gap penalties?", "gold_answer": "Needleman-Wunsch"}
+{"question": "What is the term for the practice of quantifying an author's distinctive writing style?", "gold_answer": "stylometry"}
+{"question": "In statistics, what metric measures the mean squared difference between predicted probabilities and actual outcomes?", "gold_answer": "Brier score"}
