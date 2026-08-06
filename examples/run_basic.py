@@ -20,6 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import dspy
+from dotenv import load_dotenv
 
 from src.confidence import Prediction, brier_score, expected_calibration_error, reliability_breakdown
 from src.data import load_jsonl
@@ -35,6 +36,13 @@ def is_correct(model_answer: str, gold_answer: str) -> bool:
 
 
 def main():
+    load_dotenv()
+
+    # Windows consoles default to cp1252, which chokes on non-ASCII
+    # characters that can show up in LM output (accents, symbols, etc.).
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--strategy", default="direct", choices=["direct", "reasoned"],
@@ -50,10 +58,13 @@ def main():
     )
     args = parser.parse_args()
 
-    if not os.environ.get("ANTHROPIC_API_KEY") and not os.environ.get("OPENAI_API_KEY"):
+    if not any(
+        os.environ.get(var)
+        for var in ("ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GEMINI_API_KEY")
+    ):
         print(
-            "Warning: no ANTHROPIC_API_KEY or OPENAI_API_KEY found in environment. "
-            "Set one before running, e.g.:\n  export ANTHROPIC_API_KEY='your-key'\n"
+            "Warning: no ANTHROPIC_API_KEY, OPENAI_API_KEY, or GEMINI_API_KEY found in "
+            "environment. Set one before running, e.g.:\n  export GEMINI_API_KEY='your-key'\n"
         )
 
     lm = dspy.LM(args.model)
@@ -85,7 +96,7 @@ def main():
             Prediction(question=question, answer=result.answer, confidence=confidence, correct=correct)
         )
 
-        status = "✓" if correct else "✗"
+        status = "[OK]" if correct else "[X]"
         print(f"  {status} conf={confidence:.2f}  Q: {question[:60]}")
         print(f"      A: {result.answer[:100]}")
 

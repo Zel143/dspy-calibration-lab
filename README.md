@@ -50,20 +50,30 @@ source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-You'll need an LLM API key. DSPy supports OpenAI, Anthropic, and others via
-`litellm` under the hood. Set whichever you're using:
+You'll need an LLM API key. DSPy supports OpenAI, Anthropic, Gemini, and
+others via `litellm` under the hood. Set whichever you're using:
 
 ```bash
 export ANTHROPIC_API_KEY="your-key-here"
 # or
 export OPENAI_API_KEY="your-key-here"
+# or
+export GEMINI_API_KEY="your-key-here"
 ```
+
+Gemini has a free tier — grab a key at https://aistudio.google.com/apikey.
 
 ## Running the basic experiment
 
 ```bash
 python examples/run_basic.py
+# with Gemini:
+python examples/run_basic.py --model gemini/gemma-4-26b-a4b-it
 ```
+
+Note: new Gemini API keys sometimes have zero free-tier quota for the
+`gemini-2.x`/`gemini-1.5` models (429/404 errors), but do have quota for
+Gemma models. If a `gemini-*` model fails, try a `gemma-*` one instead.
 
 This will:
 1. Load the toy question set in `data/sample_questions.jsonl`
