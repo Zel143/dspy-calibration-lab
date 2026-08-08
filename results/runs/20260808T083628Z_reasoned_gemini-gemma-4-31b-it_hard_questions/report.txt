@@ -1,0 +1,7 @@
+Strategy:      reasoned
+Model:         gemini/gemma-4-31b-it
+Dataset:       data/hard_questions.jsonl
+N questions:   50
+Accuracy:      88.00%
+Brier score:   0.1195
+ECE:           0.1230

@@ -13,6 +13,7 @@ class Prediction:
     answer: str
     confidence: float  # 0.0 - 1.0
     correct: bool       # ground truth, filled in after scoring
+    id: str | None = None  # optional external key (e.g. a verse ref) for joining against other datasets
 
 
 def brier_score(predictions: list[Prediction]) -> float:

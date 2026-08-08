@@ -1,0 +1,51 @@
+question,answer,confidence,correct
+What is the capital of France?,Paris,1.0,True
+What is the atomic number of tungsten?,74,1.0,True
+Who was the Byzantine emperor at the time of the Fourth Crusade's sack of Constantinople in 1204?,Alexios V Doukas (also known as Alexios Mourtzouphlos),1.0,True
+What is the smallest prime number greater than 1000?,1009,1.0,True
+"According to most textual scholars, which Pauline epistle is most frequently classified as pseudonymous rather than authentically Pauline: Philippians or 2 Thessalonians?",2 Thessalonians,1.0,True
+"What is the escape velocity of Mars in km/s, to one decimal place?",5.0 km/s,1.0,True
+Which king of England had the longest reign before Elizabeth II: Victoria or George III?,Victoria,1.0,True
+"What is the chemical formula for the mineral olivine's magnesium end-member, forsterite?",Mg2SiO4,1.0,True
+"In the Documentary Hypothesis, which source (J, E, P, or D) is traditionally credited with most of Deuteronomy?",D,1.0,True
+"What was the population of the Roman Empire at its territorial peak under Trajan, to the nearest 10 million?",60 million,0.8,True
+"Which mathematician is credited with first proving the Four Color Theorem using a computer-assisted proof, in 1976?",Kenneth Appel and Wolfgang Haken,1.0,True
+What is the second-most abundant element by mass in the Earth's crust?,Silicon,1.0,True
+"How many extant books does the Hebrew Bible (Tanakh) traditionally comprise, by the standard Jewish counting?",24,1.0,True
+What year was the Rosetta Stone discovered?,1799,1.0,True
+Which twentieth-century philosopher coined the term 'language game' (Sprachspiel)?,Ludwig Wittgenstein,1.0,True
+"What is the exact half-life of carbon-14, in years?","5,730 years",1.0,True
+Which Hebrew prophet is traditionally credited with the shortest book in the Hebrew Bible by word count?,Obadiah,1.0,True
+"What is the Feigenbaum constant, to three decimal places?",4.669,1.0,True
+Who directed the 1958 film 'Vertigo'?,Alfred Hitchcock,1.0,True
+What is the term for a manuscript variant where a scribe unintentionally skips text between two identical words or phrases?,homoeosis,1.0,False
+"How many strong's numbers are assigned to distinct Hebrew and Aramaic words in the Old Testament portion of Strong's Concordance, approximately?","Approximately 8,674",1.0,True
+"What is the boiling point of water at the summit of Mount Everest, in degrees Celsius, to the nearest whole number?",71,0.95,True
+"Which Church Father is traditionally credited with the phrase 'credo quia absurdum' ('I believe because it is absurd'), though the exact phrase does not appear verbatim in his surviving works?",Tertullian,1.0,True
+"What is the currently accepted age of the universe in billions of years, per the 2018 Planck satellite results, to one decimal place?",13.8,1.0,True
+"In stylometric authorship attribution, what is the name of the classic distance measure introduced by John Burrows that compares z-scores of the most frequent words between texts?",Burrows' Delta,1.0,True
+"What is the melting point of tungsten in degrees Celsius, to the nearest 10?",3420,1.0,True
+Who was the Roman emperor immediately preceding Diocletian?,Carinus,1.0,True
+"What is the term in textual criticism for a scribal error caused by the eye jumping from one line to a similar line further down, causing an omission?",homoeoteleuton,0.95,False
+What is the value of the golden ratio to four decimal places?,1.6180,1.0,True
+"Which council of the early Church formally condemned Nestorianism, in 431 AD?",Council of Ephesus,1.0,True
+"What is the specific heat capacity of liquid water in J/(g*K), to two decimal places?",4.18,1.0,True
+"In the Masoretic Text tradition, what is the technical term for the marginal notes cataloguing textual peculiarities, transmitted alongside the consonantal text?",Masorah,1.0,True
+"What is the radius of the observable universe in light-years, to the nearest billion?",47 billion light-years,1.0,False
+Who was the first Ottoman sultan to claim the title of caliph?,Selim I,0.95,True
+What is the term for the literary technique in Hebrew poetry where a second line restates or intensifies the idea of the first?,Parallelism (specifically synonymous parallelism),1.0,True
+"What is the density of gold in g/cm^3, to two decimal places?",19.30 g/cm^3,1.0,False
+Which minor prophet's book is structured almost entirely as a single extended taunt-song against Nineveh?,Nahum,1.0,True
+What is Avogadro's number to three significant figures?,6.02 x 10^23,1.0,True
+Who succeeded Justinian I as Byzantine emperor?,Justin II,1.0,True
+"What is the standard atmospheric pressure at sea level in kilopascals, to one decimal place?",101.3,1.0,True
+"In source criticism of the Pentateuch, what German term is used for the hypothetical earliest narrative source, traditionally labeled J?",Jahwist,1.0,False
+"What is the wavelength of visible red light at the long end of the spectrum, in nanometers, to the nearest 10?",700,0.85,True
+"Which Assyrian king is credited with sacking the northern kingdom of Israel's capital, Samaria, completing its conquest around 722 BC?",Sargon II,1.0,False
+What is the term for a Hebrew manuscript colophon that records the scribe's name and date of copying?,colophon,0.95,True
+"What is the speed of sound in dry air at 20 degrees Celsius, in meters per second, to the nearest whole number?",343,1.0,True
+"Which Church council produced the original form of the Nicene Creed, in 325 AD?",The First Council of Nicaea (or the Council of Nicaea),1.0,True
+"What is the pKa of acetic acid, to two decimal places?",4.76,1.0,True
+Who was the last king of the united monarchy of Israel before the kingdom split into Israel and Judah?,Solomon,1.0,True
+"What is the term used in biblical Hebrew grammar for the verb form that expresses sequential past narrative action, formed with a prefixed vav?","The term is the ""vav consecutive"" (or ""waw consecutive""), specifically the ""wayyiqtol"" form.",1.0,True
+"What is the orbital period of Jupiter around the Sun in Earth years, to one decimal place?",11.9,1.0,True

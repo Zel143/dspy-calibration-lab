@@ -13,6 +13,7 @@ Usage:
 
 import argparse
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -25,14 +26,41 @@ from dotenv import load_dotenv
 from src.confidence import Prediction, brier_score, expected_calibration_error, reliability_breakdown
 from src.data import load_jsonl
 from src.pipeline import get_pipeline
+from src.results import save_run
+
+
+def _normalize(text: str) -> str:
+    """Strip formatting noise (thousands separators, curly/straight quote
+    variants) that a substring match would otherwise treat as a mismatch.
+    """
+    text = text.strip().lower()
+    text = text.replace(",", "")
+    text = text.replace("-", " ")
+    text = text.replace("’", "'")
+    text = re.sub(r"(\w)'s\b", r"\1", text)  # possessive "'s" -> nothing
+    text = text.replace("'", "")             # remaining apostrophes (e.g. "Burrows'")
+    return text
 
 
 def is_correct(model_answer: str, gold_answer: str) -> bool:
-    """Very naive substring match. Good enough for the toy dataset — swap
-    for something smarter (embedding similarity, exact-match on normalized
-    labels, etc.) once you're using real evaluation data.
+    """Naive substring match on normalized text. Good enough for the toy
+    dataset — swap for something smarter (embedding similarity, exact-match
+    on normalized labels, etc.) once you're using real evaluation data.
     """
-    return gold_answer.strip().lower() in model_answer.strip().lower()
+    return _normalize(gold_answer) in _normalize(model_answer)
+
+
+def classify_answer(model_answer: str, classes: list[str]) -> str | None:
+    """For fixed-label classification datasets (e.g. verse register), a
+    plain substring match is fragile: a short label like "law-wisdom" can
+    spuriously match partial answers, or fail to match a differently-worded
+    one. Instead, check which of the known class labels appears in the
+    normalized answer; return it only if exactly one does, else None
+    (ambiguous or no match -> scored wrong).
+    """
+    normalized_answer = _normalize(model_answer)
+    found = [c for c in classes if _normalize(c) in normalized_answer]
+    return found[0] if len(found) == 1 else None
 
 
 def main():
@@ -56,7 +84,19 @@ def main():
         "--data", default="data/sample_questions.jsonl",
         help="Path to a JSONL dataset with 'question' and 'gold_answer' fields"
     )
+    parser.add_argument(
+        "--no-save", action="store_true",
+        help="Skip writing results/ output; print to stdout only"
+    )
+    parser.add_argument(
+        "--classes", default=None,
+        help="Comma-separated fixed label set (e.g. 'prophetic,narrative,law-wisdom'). "
+             "When set, scoring switches from substring match to exact-label "
+             "classification: the answer is correct only if exactly one class "
+             "label appears in it and it matches gold."
+    )
     args = parser.parse_args()
+    classes = [c.strip() for c in args.classes.split(",")] if args.classes else None
 
     if not any(
         os.environ.get(var)
@@ -80,6 +120,7 @@ def main():
     for row in dataset:
         question = row["question"]
         gold = row["gold_answer"]
+        row_id = row.get("id")
 
         result = pipeline(question=question)
 
@@ -90,10 +131,13 @@ def main():
             confidence = 0.5
         confidence = max(0.0, min(1.0, confidence))
 
-        correct = is_correct(result.answer, gold)
+        if classes is not None:
+            correct = classify_answer(result.answer, classes) == gold
+        else:
+            correct = is_correct(result.answer, gold)
 
         predictions.append(
-            Prediction(question=question, answer=result.answer, confidence=confidence, correct=correct)
+            Prediction(question=question, answer=result.answer, confidence=confidence, correct=correct, id=row_id)
         )
 
         status = "[OK]" if correct else "[X]"
@@ -115,6 +159,10 @@ def main():
             f"  conf {row['range']}: n={row['count']:<3} "
             f"avg_conf={row['avg_confidence']:<6} accuracy={row['accuracy']}"
         )
+
+    if not args.no_save:
+        run_id = save_run(args.strategy, args.model, args.data, predictions)
+        print(f"\nSaved results/runs/{run_id}/ and appended to results/summary.csv")
 
 
 if __name__ == "__main__":
