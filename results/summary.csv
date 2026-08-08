@@ -1,0 +1,5 @@
+run_id,timestamp,strategy,model,dataset,n,accuracy,brier,ece
+20260808T082027Z_direct_gemini-gemma-4-31b-it_hard_questions,20260808T082027Z,direct,gemini/gemma-4-31b-it,data/hard_questions.jsonl,50,0.8,0.1945,0.1988
+20260808T082207Z_direct_gemini-gemma-4-31b-it_hard_questions,20260808T082207Z,direct,gemini/gemma-4-31b-it,data/hard_questions.jsonl,50,0.86,0.1345,0.1388
+20260808T083628Z_reasoned_gemini-gemma-4-31b-it_hard_questions,20260808T083628Z,reasoned,gemini/gemma-4-31b-it,data/hard_questions.jsonl,50,0.88,0.1195,0.123
+20260808T095114Z_direct_gemini-gemma-4-31b-it_verse_register,20260808T095114Z,direct,gemini/gemma-4-31b-it,data/verse_register.jsonl,60,0.8833,0.1121,0.1108

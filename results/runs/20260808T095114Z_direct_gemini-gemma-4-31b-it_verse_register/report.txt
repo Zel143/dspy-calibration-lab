@@ -1,0 +1,7 @@
+Strategy:      direct
+Model:         gemini/gemma-4-31b-it
+Dataset:       data/verse_register.jsonl
+N questions:   60
+Accuracy:      88.33%
+Brier score:   0.1121
+ECE:           0.1108
