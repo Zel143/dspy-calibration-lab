@@ -1,5 +1,7 @@
 # calibration-lab
 
+*A DSPy playground testing whether LLM confidence framing tracks actual correctness (the Overtrust Index question), comparing direct vs. reasoned confidence-elicitation strategies via Brier score and ECE.*
+
 A small DSPy playground for exploring the **Overtrust Index (OTI)** question:
 does an LLM's linguistic confidence framing ("I'm certain that...", "It's possible
 that...") track its actual correctness, or are the two independent?
