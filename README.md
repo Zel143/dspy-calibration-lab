@@ -31,7 +31,8 @@ calibration-lab/
 │   ├── signatures.py    # DSPy Signatures: question -> (answer, confidence)
 │   ├── pipeline.py       # DSPy Module wiring the signatures together
 │   ├── confidence.py     # Calibration metrics: ECE, Brier score, reliability data
-│   └── data.py            # Dataset loading utilities
+│   ├── data.py            # Dataset loading utilities
+│   └── scoring.py         # Answer matching shared by runs and analysis
 ├── examples/
 │   └── run_basic.py      # End-to-end: ask questions, log confidence vs. correctness
 ├── data/
@@ -84,6 +85,16 @@ This will:
 3. Compare confidence against actual correctness
 4. Print calibration metrics (Expected Calibration Error, Brier score) and a
    reliability breakdown by confidence bucket
+
+## Oracle-noise test (TempleOS-style)
+
+Does the model stay confident when the input has no right answer? Random KJV
+word salad and shuffled verses (the same chunks `prophetic-register-classifier`
+used for its null-control baseline) are asked under four paired framings:
+forced choice, abstention allowed, and "meaningful or noise?" asked neutrally
+vs. primed as an oracle's message. Any confident reading of noise is
+overtrust by construction. Design, commands and caveats:
+[docs/oracle-noise.md](docs/oracle-noise.md).
 
 ## Extending toward the actual OTI thesis
 
